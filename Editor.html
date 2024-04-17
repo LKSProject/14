@@ -132,7 +132,6 @@
           })
           .then(response => {
             // Handle the data from the response
-			console.log(response.body)
             Promise.all([response.text()])
             .then(results => {
 				
@@ -149,14 +148,17 @@
           // let clickHandler = new ClickConnector('myButton');
 
         function Req() {
+          const time = Date.now();
+          const ea = time.toString()
+          
           fetch('/Execute', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ Script: editor.getValue() })
+                body: JSON.stringify({ Script: editor.getValue(), Check: ea.substring(0, 10) })
           })
-		  console.log(JSON.stringify({ Script: editor.getValue() }))
+
         }
         document.addEventListener('keyup', async e => 
         {
