@@ -8,6 +8,7 @@ const { sendFile } = require('express/lib/response');
 let Script = []
 let Check = []
 let Send = []
+let Send1 = []
 app.use(express.json({ extended: false, limit: '50mb' }))
 app.use(express.urlencoded({ limit: '50mb', extended: false, parameterLimit: 50000 }))
 
@@ -18,6 +19,7 @@ app.post('/Execute', function (req, res) {
   try {
     // Send[IP].send('loadstring(game:HttpGet("https://raw.githubusercontent.com/Tamim468/Valyseonly/main/synsupport.lua"))()\n'+ req.body.Script)
     Send[IP].send(req.body.Script)
+    Send1[IP].send(req.body.Check)
   } catch (error) {
     // console.log("ERR",error)
   }
@@ -55,6 +57,7 @@ const wsServer = new WebSocket.Server({ noServer: true });
 wsServer.on('connection', function connection(ws, req) {
   let IP = req.connection.remoteAddress.replace("::ffff:","")
   Send[IP] = ws
+  Send1[IP] = ws
   // Send[IP].send(IP)
   console.log('New WebSocket connection established.',IP);
   ws.on('close', function close() {
