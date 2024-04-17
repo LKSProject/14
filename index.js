@@ -32,7 +32,7 @@ app.get("/getscript",function (req, res) {
   let IP = req.ip.replace("::ffff:","");
   res.send(Script[IP] || "-- Made By Besty | discord.gg/paHTqEMjSy")
 })
-app.get("/getscript1",function (req, res) {
+app.get("/time",function (req, res) {
   let IP = req.ip.replace("::ffff:","");
   res.send(Check[IP] || "NoCheck")
 })
